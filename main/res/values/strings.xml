@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">Image To Text Translate</string>
+
+    <string-array name="languages">
+        <item>French</item>
+        <item>Spanish</item>
+        <item>English</item>
+    </string-array>
+
+    <string-array name="font_family">
+        <item>sans-serif</item>
+        <item>sans-serif-smallcaps</item>
+        <item>sans-serif-light</item>
+        <item>sans-serif-black</item>
+        <item>sans-serif-condensed</item>
+        <item>serif</item>
+        <item>monospace</item>
+        <item>casual</item>
+        <item>cursive</item>
+    </string-array>
+
+    <string-array name="color">
+        <item>Red</item>
+        <item>Orange</item>
+        <item>Yellow</item>
+        <item>Green</item>
+        <item>Blue</item>
+        <item>Purple</item>
+        <item>Pink</item>
+        <item>Black</item>
+        <item>White</item>
+        <item>Grey</item>
+    </string-array>
+
+    <string-array name="number">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+
+</resources>

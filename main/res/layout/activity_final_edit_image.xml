@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FinalEditImage">
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="312dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/review_save_pic" />
+
+
+    <Button
+        android:id="@+id/save_button"
+        android:layout_width="196dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="8dp"
+        android:background="#CFCFCF"
+        android:onClick="SaveImageClick"
+        android:text="Save Image"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:backgroundTint="#CFCFCF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!--    <FrameLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="615sp"-->
+    <!--        app:layout_constraintBottom_toTopOf="@+id/next_crop"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.473"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/imageView"-->
+    <!--        app:layout_constraintVertical_bias="0.363">-->
+
+
+    <!--        <ImageView-->
+    <!--            android:id="@+id/imgPicture"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="match_parent"-->
+    <!--            android:layout_gravity="center_horizontal"/>-->
+    <!--    </FrameLayout>-->
+
+
+    <!--    <RelativeLayout-->
+    <!--        android:id="@+id/layoutforprofileimage"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="@+id/i"-->
+    <!--        app:layout_constraintBottom_toTopOf="@+id/save_button"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/imageView">-->
+
+
+
+
+
+
+
+
+<!--    <ImageView-->
+<!--        android:id="@+id/imgPicture"-->
+<!--        android:layout_width="fill_parent"-->
+<!--        android:layout_height="fill_parent"-->
+<!--        android:layout_gravity="center"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/save_button"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/imageView"></ImageView>-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/text"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_al="@id/imageView5"-->
+<!--        android:text="5555555555555"-->
+<!--        android:textSize="20sp"-->
+<!--        android:visibility="visible"-->
+<!--        tools:layout_editor_absoluteX="136dp"-->
+<!--        tools:layout_editor_absoluteY="211dp" />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView5"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="348dp"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/imgPicture"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.498"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/imgPicture"-->
+<!--        app:layout_constraintVertical_bias="0.696"-->
+<!--        app:srcCompat="@drawable/ic_launcher_background" />-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--    <RelativeLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+
+<!--        android:layout_gravity="center"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/save_button"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/imageView">-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/imgPicture"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"/>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentBottom="true"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:orientation="vertical">-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Hotel Seawoods, Mahalaxmi"-->
+<!--                android:textStyle="bold"-->
+<!--                android:textColor="#EF0F0F"/>-->
+<!--        </LinearLayout>-->
+
+<!--    </RelativeLayout>-->
+
+
+
+
+
+
+
+    <ImageView
+        android:id="@+id/imgPicture"
+        android:layout_width="match_parent"
+        android:layout_height="1750px"
+        app:srcCompat="@drawable/"
+        android:layout_gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/save_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView">
+    </ImageView>
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="5555555555555"
+        android:textSize="20sp"
+        android:visibility="visible"
+        android:layout_alignLeft="@id/imgPicture"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="10dp"
+
+
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
