@@ -27,6 +27,13 @@ public class FinalEditImage extends AppCompatActivity {
 
     private ImageView imgPicture;
     private Bitmap bit_image;
+    private float title_location = 0;
+    private float button_location = 0;
+
+    private int fix_device_height = 120;
+    private float distance_height_true = 1500;
+    private float distance_width_true = 0;
+    private float device_height = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,21 +51,15 @@ public class FinalEditImage extends AppCompatActivity {
                 //Gets the true space between the title and save button and the devices width
                 View title = findViewById(R.id.imageView);
                 View button = findViewById(R.id.save_button);
-                RectF oneRect = calculateRectOnScreen(title);
-                RectF otherRect = calculateRectOnScreen(button);
 
-                float distance_height_true = getDistanceBetweenViews(title, button);////
 
                 //Gets the width of entire device
                 DisplayMetrics displayMetrics = new DisplayMetrics();
                 getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
 
-                float distance_width_true = displayMetrics.widthPixels;////
-                float device_height = displayMetrics.heightPixels;////
+                distance_width_true = displayMetrics.widthPixels;////
+                device_height = displayMetrics.heightPixels;////
 
-
-                int height = imgPicture.getHeight();
-                int width = imgPicture.getWidth();
 
                 int new_height = bit_image.getHeight();
                 int new_width = bit_image.getWidth();
@@ -127,11 +128,11 @@ public class FinalEditImage extends AppCompatActivity {
 
                     // get the center point of the screen
                     int centerX = (int)(distance_width_true / 2);
-                    int centerY = (int)(device_height / 2) - 150; // fix 150
+                    int centerY = (int)(device_height / 2) - fix_device_height;
 
                     // set the imageview minus half the width and height so its centered
-                    //imgPicture.setTranslationX(centerX - (int)(Math.floor(scale_factor * new_width)) / 2);
-                    //imgPicture.setTranslationY(centerY - (distance_height_true / 2));
+                    imgPicture.setTranslationX(centerX - (int)(Math.floor(scale_factor * new_width)) / 2);
+                    imgPicture.setTranslationY(centerY - (distance_height_true / 2));
                 }
 
 
@@ -199,16 +200,4 @@ public class FinalEditImage extends AppCompatActivity {
 
 
 
-    public static int getDistanceBetweenViews(View firstView, View secondView) {
-        int[] firstPosition = new int[2];
-        int[] secondPosition = new int[2];
-
-        firstView.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
-        firstView.getLocationOnScreen(firstPosition);
-        secondView.getLocationOnScreen(secondPosition);
-
-        int b = firstView.getMeasuredHeight() + firstPosition[1];
-        int t = secondPosition[1];
-        return Math.abs(b-t);
-    }
 }
