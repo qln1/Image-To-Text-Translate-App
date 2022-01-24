@@ -63,127 +63,131 @@
     <!--        app:layout_constraintTop_toBottomOf="@+id/imageView">-->
 
 
+    <!--    <ImageView-->
+    <!--        android:id="@+id/imgPicture"-->
+    <!--        android:layout_width="fill_parent"-->
+    <!--        android:layout_height="fill_parent"-->
+    <!--        android:layout_gravity="center"-->
+    <!--        app:layout_constraintBottom_toTopOf="@+id/save_button"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/imageView"></ImageView>-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/text"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_al="@id/imageView5"-->
+    <!--        android:text="5555555555555"-->
+    <!--        android:textSize="20sp"-->
+    <!--        android:visibility="visible"-->
+    <!--        tools:layout_editor_absoluteX="136dp"-->
+    <!--        tools:layout_editor_absoluteY="211dp" />-->
+
+    <!--    <ImageView-->
+    <!--        android:id="@+id/imageView5"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="348dp"-->
+    <!--        app:layout_constraintBottom_toTopOf="@+id/imgPicture"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.498"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/imgPicture"-->
+    <!--        app:layout_constraintVertical_bias="0.696"-->
+    <!--        app:srcCompat="@drawable/ic_launcher_background" />-->
 
 
+    <!--    <RelativeLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="0dp"-->
 
+    <!--        android:layout_gravity="center"-->
+    <!--        app:layout_constraintBottom_toTopOf="@+id/save_button"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/imageView">-->
 
+    <!--        <ImageView-->
+    <!--            android:id="@+id/imgPicture"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="match_parent"/>-->
+
+    <!--        <LinearLayout-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_alignParentBottom="true"-->
+    <!--            android:layout_margin="10dp"-->
+    <!--            android:orientation="vertical">-->
+
+    <!--            <TextView-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:text="Hotel Seawoods, Mahalaxmi"-->
+    <!--                android:textStyle="bold"-->
+    <!--                android:textColor="#EF0F0F"/>-->
+    <!--        </LinearLayout>-->
+
+    <!--    </RelativeLayout>-->
 
 
 <!--    <ImageView-->
 <!--        android:id="@+id/imgPicture"-->
-<!--        android:layout_width="fill_parent"-->
-<!--        android:layout_height="fill_parent"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
 <!--        android:layout_gravity="center"-->
 <!--        app:layout_constraintBottom_toTopOf="@+id/save_button"-->
 <!--        app:layout_constraintEnd_toEndOf="parent"-->
 <!--        app:layout_constraintStart_toStartOf="parent"-->
 <!--        app:layout_constraintTop_toBottomOf="@+id/imageView"></ImageView>-->
 
-<!--    <TextView-->
-<!--        android:id="@+id/text"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_al="@id/imageView5"-->
-<!--        android:text="5555555555555"-->
-<!--        android:textSize="20sp"-->
-<!--        android:visibility="visible"-->
-<!--        tools:layout_editor_absoluteX="136dp"-->
-<!--        tools:layout_editor_absoluteY="211dp" />-->
-
-<!--    <ImageView-->
-<!--        android:id="@+id/imageView5"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="348dp"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/imgPicture"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.498"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/imgPicture"-->
-<!--        app:layout_constraintVertical_bias="0.696"-->
-<!--        app:srcCompat="@drawable/ic_launcher_background" />-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--    <RelativeLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="0dp"-->
-
-<!--        android:layout_gravity="center"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/save_button"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/imageView">-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/imgPicture"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"/>-->
-
-<!--        <LinearLayout-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_alignParentBottom="true"-->
-<!--            android:layout_margin="10dp"-->
-<!--            android:orientation="vertical">-->
-
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Hotel Seawoods, Mahalaxmi"-->
-<!--                android:textStyle="bold"-->
-<!--                android:textColor="#EF0F0F"/>-->
-<!--        </LinearLayout>-->
-
-<!--    </RelativeLayout>-->
-
-
-
-
-
-
-
-    <ImageView
-        android:id="@+id/imgPicture"
-        android:layout_width="match_parent"
-        android:layout_height="1750px"
-        app:srcCompat="@drawable/"
-        android:layout_gravity="center"
-        app:layout_constraintBottom_toTopOf="@+id/save_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView">
-    </ImageView>
 
     <TextView
         android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="5555555555555"
-        android:textSize="20sp"
-        android:visibility="visible"
         android:layout_alignLeft="@id/imgPicture"
         android:layout_alignParentBottom="true"
         android:layout_margin="10dp"
+        android:text="5555555555555"
+        android:textSize="20sp"
+        android:visibility="visible"
 
 
-        />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="512dp"
+        android:layout_marginEnd="96dp"
+        android:text="TextView"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgPicture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/save_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"/>
+
+    <!--    <ImageView-->
+<!--        android:id="@+id/imageView6"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:srcCompat="@drawable/ic_launcher_background"-->
+<!--        tools:layout_editor_absoluteX="1146px"-->
+<!--        tools:layout_editor_absoluteY="540px" />-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--    tools:layout_editor_absoluteX="127dp"-->
+<!--    tools:layout_editor_absoluteY="314dp"-->
