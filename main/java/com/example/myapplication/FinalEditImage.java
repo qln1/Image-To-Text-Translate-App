@@ -40,137 +40,78 @@ public class FinalEditImage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_final_edit_image);
 
-        // gets a reference to the image view that has the image that the user will see
         imgPicture = new ImageView(this);
         bit_image = ((MyApplication) this.getApplication()).getOriginal_image();
-        //ImageView new_img = new ImageView(this);
+
+        //Gets the true space between the title and save button and the devices width. Fix later
+        View title = findViewById(R.id.imageView);
+        View button = findViewById(R.id.save_button);
+
+        //Gets the width of entire device
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        distance_width_true = displayMetrics.widthPixels;
+        device_height = displayMetrics.heightPixels;
+
+        //Original Dimensions of Image
+        int new_height = bit_image.getHeight();
+        int new_width = bit_image.getWidth();
 
 
-        //imgPicture.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            //public void onGlobalLayout() {
-                //Gets the true space between the title and save button and the devices width
-                View title = findViewById(R.id.imageView);
-                View button = findViewById(R.id.save_button);
+        // Create ImageView
+        // Is user inputted picture more horizontal or vertical?
+        if(new_width >= new_height) {
+            float scale_factor = distance_width_true / new_width;
 
+            imgPicture.setLayoutParams(new ViewGroup.LayoutParams(
+                    (int) distance_width_true,
+                    (int) Math.floor(scale_factor * new_height)));
 
-                //Gets the width of entire device
-                DisplayMetrics displayMetrics = new DisplayMetrics();
-                getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+            this.addContentView(imgPicture,new ViewGroup.LayoutParams(
+                    (int) distance_width_true,
+                    (int) Math.floor(scale_factor * new_height)));
 
-                distance_width_true = displayMetrics.widthPixels;////
-                device_height = displayMetrics.heightPixels;////
+            //Move to center of screen
+            // get the center point of the screen
+            int centerX = (int)(distance_width_true / 2);
+            int centerY = (int)(device_height / 2) - 150;   //fix 150
 
+            // set the imageview minus half the width and height so its centered
+            imgPicture.setX(centerX - (distance_width_true / 2));
+            imgPicture.setY(centerY - (int)(Math.floor(scale_factor * new_height)) / 2);
+        } else {
+            double scale_factor = distance_height_true / new_height;
 
-                int new_height = bit_image.getHeight();
-                int new_width = bit_image.getWidth();
+            imgPicture.setLayoutParams(new ViewGroup.LayoutParams(
+                    (int) Math.floor(scale_factor * new_width),
+                    (int) distance_height_true));
 
+            this.addContentView(imgPicture,new ViewGroup.LayoutParams(
+                    (int) Math.floor(scale_factor * new_width),
+                    (int) distance_height_true));
 
-                // Is user inputted picture more horizontal or vertical?
-                if(new_width >= new_height) {
-                    float scale_factor = distance_width_true / new_width;
+            //Move to center of screen
+            // get the center point of the screen
+            int centerX = (int)(distance_width_true / 2);
+            int centerY = (int)(device_height / 2) - fix_device_height;
 
-                    //Set imageview width to device's width
-                    //imgPicture.getLayoutParams().width = (int)distance_width_true;
+            // set the imageview minus half the width and height so its centered
+            imgPicture.setX(centerX - (int)(Math.floor(scale_factor * new_width)) / 2);
+            imgPicture.setY(centerY - (distance_height_true / 2));
+        }
 
-                    //Set imageview height to computed height
-                    //imgPicture.getLayoutParams().height = (int) Math.floor(scale_factor * new_height);
-
-
-                    imgPicture.setLayoutParams(new ViewGroup.LayoutParams(
-                            (int) distance_width_true,
-                            (int) Math.floor(scale_factor * new_height)));
-
-//                    LinearLayout.LayoutParams layoutParams=new LinearLayout.LayoutParams((int)distance_width_true,
-//                            (int) Math.floor(scale_factor * new_height));
-//                    layoutParams.gravity= Gravity.CENTER;
-//                    imgPicture.setLayoutParams(layoutParams);
-
-                    this.addContentView(imgPicture,new ViewGroup.LayoutParams(
-                            (int) distance_width_true,
-                            (int) Math.floor(scale_factor * new_height)));
-
-
-                    //Move to center of screen
-
-                    // get the center point of the screen
-                    int centerX = (int)(distance_width_true / 2);
-                    int centerY = (int)(device_height / 2) - 150;   //fix 150
-
-                    // set the imageview minus half the width and height so its centered
-                    imgPicture.setTranslationX(centerX - (distance_width_true / 2));
-                    imgPicture.setTranslationY(centerY - (int)(Math.floor(scale_factor * new_height)) / 2);
-                    //imgPicture.setY(100);
-
-                } else {
-                    double scale_factor = distance_height_true / new_height;
-
-                    //Set imageview height to max distance between title and button
-                    //imgPicture.getLayoutParams().height = (int)distance_height_true;
-
-                    //Set imageview width to computed width
-                   // imgPicture.getLayoutParams().width = (int) Math.floor(scale_factor * new_width);
-
-                    imgPicture.setLayoutParams(new ViewGroup.LayoutParams(
-                            (int) Math.floor(scale_factor * new_width),
-                            (int) distance_height_true));
-
-//                    LinearLayout.LayoutParams layoutParams=new LinearLayout.LayoutParams((int)distance_width_true,
-//                            (int) Math.floor(scale_factor * new_height));
-//                    layoutParams.gravity= Gravity.CENTER;
-//                    imgPicture.setLayoutParams(layoutParams);
-
-                    this.addContentView(imgPicture,new ViewGroup.LayoutParams(
-                            (int) Math.floor(scale_factor * new_width),
-                            (int) distance_height_true));
-
-
-                    //Move to center of screen
-
-                    // get the center point of the screen
-                    int centerX = (int)(distance_width_true / 2);
-                    int centerY = (int)(device_height / 2) - fix_device_height;
-
-                    // set the imageview minus half the width and height so its centered
-                    imgPicture.setTranslationX(centerX - (int)(Math.floor(scale_factor * new_width)) / 2);
-                    imgPicture.setTranslationY(centerY - (distance_height_true / 2));
-                }
-
-
-//                TextView d = findViewById(R.id.text);
-//                d.setText(imgPicture.getLayoutParams().height + "      " +  imgPicture.getLayoutParams().width);
-
-
-                // show the image to the user
-
-                imgPicture.setImageBitmap(bit_image);
-                RectF s = calculateRectOnScreen(imgPicture);
-                TextView ss = findViewById(R.id.textView2);
-                ss.setText(s.top +  "    " + s.left  + "                 " + s.right + "     " + s.bottom);
-
-
-                // Removes the listener to prevent being called again by future layout events:
-                //imgPicture.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-            //}
-        //});
-
-
-
-
-
-
-
-        //int x = imgPicture.getTop() + imgPicture.getDrawable().getBounds().top;
-        //int y = imgPicture.getLeft() + imgPicture.getDrawable().getBounds().left;
-
-        //RectF oneRect3 = calculateRectOnScreen(imgPicture);
-
-
-
-        //Rect s = getBitmapPositionInsideImageView(imgPicture);
-
-
-        //ss.setText(s.top +  "    " + s.left  + "                 " + s.right + "     " + s.bottom);
-
+        // show the image to the user
+        imgPicture.setImageBitmap(bit_image);
+//        RectF s = calculateRectOnScreen(imgPicture);
+        TextView ss = new TextView(this);
+        ss.setTextSize(30);
+        ss.setText("ASDFGH");
+        ss.setY(600);
+        ss.setX(700);
+        this.addContentView(ss, new ViewGroup.LayoutParams(
+                (int) 500,
+                (int) 500));
+        //ss.setText(imgPicture.getHeight() +  "    " + imgPicture.getWidth()  + "                 " + imgPicture.getTop() + "     " + imgPicture.getLeft());
     }
 
 
@@ -196,8 +137,5 @@ public class FinalEditImage extends AppCompatActivity {
         startActivity(i);
         //if no then don't move
     }
-
-
-
 
 }

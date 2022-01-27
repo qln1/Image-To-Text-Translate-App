@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                     ((MyApplication) this.getApplication()).setOriginal_image(image);
                     ((MyApplication) this.getApplication()).setImage_file_location(imageUri);
 
-                    Intent i = new Intent(this, FinalEditImage.class);
+                    Intent i = new Intent(this, LanguageAndTextBoxInfo.class);
                     startActivity(i);
 
                 } catch (FileNotFoundException e) {

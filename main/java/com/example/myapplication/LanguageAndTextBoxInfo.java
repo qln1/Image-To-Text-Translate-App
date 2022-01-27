@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,8 +28,13 @@ public class LanguageAndTextBoxInfo extends AppCompatActivity {
         setContentView(R.layout.activity_language_and_text_box_info);
 
 
+        // show the image to the user
+        ImageView imgPicture = findViewById(R.id.imageView3);
+        Bitmap bit_image = ((MyApplication) this.getApplication()).getOriginal_image();
+        imgPicture.setImageBitmap(bit_image);
+
         //BEFORE LANGUAGE SPINNER
-        Spinner before_spinner = (Spinner) findViewById(R.id.before_la);
+        Spinner before_spinner = (Spinner) findViewById(R.id.after_la);
 
         ArrayAdapter<String> before_adapt = new ArrayAdapter<String>(LanguageAndTextBoxInfo.this,
                 android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.languages));
@@ -115,7 +121,7 @@ public class LanguageAndTextBoxInfo extends AppCompatActivity {
         Spinner background_color_spinner = (Spinner) findViewById(R.id.background_color_spin);
 
         ArrayAdapter<String> background_color_adapt = new ArrayAdapter<String>(LanguageAndTextBoxInfo.this,
-                android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.color));
+                android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.color_back));
         background_color_adapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         background_color_spinner.setAdapter(background_color_adapt);
 
