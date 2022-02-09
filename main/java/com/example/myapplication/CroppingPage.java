@@ -128,14 +128,14 @@ public class CroppingPage extends AppCompatActivity {
 
 
                 //Move to next page
-                ((MyApplication) this.getApplication()).setCurrent_textbox_num(current_box_num + 1);
-                if((current_box_num + 1) > ((MyApplication) this.getApplication()).getNum_box()) {
-                    Intent i = new Intent(this, FinalEditImage.class);
-                    startActivity(i);
-                } else {
-                    Intent i = new Intent(this, CroppingPage.class);
-                    startActivity(i);
-                }
+//                ((MyApplication) this.getApplication()).setCurrent_textbox_num(current_box_num + 1);
+//                if((current_box_num + 1) > ((MyApplication) this.getApplication()).getNum_box()) {
+//                    Intent i = new Intent(this, FinalEditImage.class);
+//                    startActivity(i);
+//                } else {
+//                    Intent i = new Intent(this, CroppingPage.class);
+//                    startActivity(i);
+//                }
 
 //                ImageView v = findViewById(R.id.test_image);
 //                v.setImageURI(resultUri);
@@ -237,6 +237,18 @@ public class CroppingPage extends AppCompatActivity {
         point.y = -1;
         return point;
     }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

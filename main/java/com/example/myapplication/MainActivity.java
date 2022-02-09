@@ -5,12 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -29,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
         // gets a reference to the image view that has the image that the user will see
         //imgPicture = findViewById(R.id.imgPicture);/////
     }
+
+
 
     // This method invoked when user clicks button and will allow
     // user to select picture from gallery
