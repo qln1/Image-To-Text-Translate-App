@@ -3,31 +3,54 @@ package com.example.myapplication;
 
 import android.app.Application;
 import android.graphics.Bitmap;
+import android.graphics.Point;
 import android.net.Uri;
 
 import java.util.ArrayList;
 
 public class MyApplication extends Application {
     Bitmap original_image = null;
+    Uri image_file_location = null;
+
     String lang_from_before = "";
     String lang_from_after = "";
+    int num_box = 0;
+    int current_textbox_num = 1;
+
     String font_family = "";
     String font_color = "";
     String background_color = "";
-    int num_box = 0;
-    int current_textbox_num = 1;
-    Uri image_file_location = null;
-    Uri[] all_cropped = new Uri[10];
+
+    Point[] all_cropped_size = new Point[10];
+    String[] all_translated = new String[10];
+    Point[] all_points = new Point[10];
     //ArrayList<Uri> all_cropped = new ArrayList<Uri>(1);
 
-    public Uri getAll_cropped(int i) {
-        //return all_cropped.get(i);
-        return all_cropped[i];
+
+    public Point getAll_points(int i) {
+        return all_points[i];
     }
 
-    public void setAll_cropped(int i, Uri new_img) {
+    public void setAll_points(int i, Point p) {
+        this.all_points[i] = p;
+    }
+
+    public String getAll_translated(int i) {
+        return all_translated[i];
+    }
+
+    public void setAll_translated(int i, String text) {
+        this.all_translated[i] = text;
+    }
+
+    public Point getAll_cropped_size(int i) {
+        //return all_cropped.get(i);
+        return all_cropped_size[i];
+    }
+
+    public void setAll_cropped_size(int i, Point new_img_pt) {
         //this.all_cropped.set(i, new_img);
-        all_cropped[i] = new_img;
+        all_cropped_size[i] = new_img_pt;
     }
 
     public Uri getImage_file_location() {

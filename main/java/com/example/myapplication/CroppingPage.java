@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
@@ -10,20 +11,35 @@ import android.graphics.Point;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.util.SparseArray;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.vision.Frame;
 import com.google.android.gms.vision.text.TextBlock;
 import com.google.android.gms.vision.text.TextRecognizer;
+//import com.google.mlkit.common.model.DownloadConditions;
+//import com.google.mlkit.nl.translate.TranslateLanguage;
+//import com.google.mlkit.nl.translate.Translation;
+//import com.google.mlkit.nl.translate.Translator;
+//import com.google.mlkit.nl.translate.TranslatorOptions;
+import com.loopj.android.http.JsonHttpResponseHandler;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.util.BitSet;
+
+import cz.msebera.android.httpclient.entity.mime.Header;
 
 public class CroppingPage extends AppCompatActivity {
 
@@ -68,19 +84,19 @@ public class CroppingPage extends AppCompatActivity {
                 .start(this);
     }
 
-    public void TextDetection(Bitmap bitmap){
-        //TODO 1. define TextRecognizer
+    public String TextDetection(Bitmap bitmap){
+        //1. define TextRecognizer
         TextRecognizer recognizer = new TextRecognizer.Builder(CroppingPage.this).build();
 
-        //TODO 2. Get bitmap from imageview
+        //2. Get bitmap from imageview
 
-        //TODO 3. get frame from bitmap
+        //3. get frame from bitmap
         Frame frame = new Frame.Builder().setBitmap(bitmap).build();
 
-        //TODO 4. get data from frame
+        //4. get data from frame
         SparseArray<TextBlock> sparseArray = recognizer.detect(frame);
 
-        //TODO 5. set data on textview
+        //5. set data on textview
         StringBuilder stringBuilder = new StringBuilder();
         for(int i=0;i < sparseArray.size(); i++){
             TextBlock tx = sparseArray.get(i);
@@ -88,10 +104,7 @@ public class CroppingPage extends AppCompatActivity {
             stringBuilder.append (str);
         }
 
-        TextView d = findViewById(R.id.textView);///////////////////////////////////////////////////////////////
-        d.setText(stringBuilder);
-
-        text_from_img = stringBuilder.toString();
+        return stringBuilder.toString();
     }
 
     @Override
@@ -108,35 +121,49 @@ public class CroppingPage extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                //Save cropped image
-                ((MyApplication) this.getApplication()).setAll_cropped(current_box_num - 1, resultUri);
+                if(bitmap_img != null) {
+                    //Start Text Detection
+                    text_from_img = TextDetection(bitmap_img);
 
-                //Start Text Detection
-                TextDetection(bitmap_img);
+                    if(text_from_img.length() != 0) {
+                        //Save cropped image's size  X = Col Width   Y = Row Height
+                        Point size = new Point();
+                        size.x = bitmap_img.getWidth();
+                        size.y = bitmap_img.getHeight();
+                        ((MyApplication) this.getApplication()).setAll_cropped_size(current_box_num - 1, size);
 
-                //Start Translate
+                        //Start Translate
+                        StartTranslation();
+
+                        //Save Translation to array
+                        ((MyApplication) this.getApplication()).setAll_translated(current_box_num - 1, text_from_img);
+
+                        //Get Points of cropped image
+                        Point point = SearchForTemplate(bit_image , bitmap_img);
+
+                        //Save Points of cropped image
+                        ((MyApplication) this.getApplication()).setAll_points(current_box_num - 1, point);
+                    }
+                }
 
 
-                //Save Translation to array
-
-
-                //Get Points of cropped image
-                Point point = SearchForTemplate(bit_image , bitmap_img);
-
-                //Save Points of cropped image
 
 
 
                 //Move to next page
-//                ((MyApplication) this.getApplication()).setCurrent_textbox_num(current_box_num + 1);
-//                if((current_box_num + 1) > ((MyApplication) this.getApplication()).getNum_box()) {
-//                    Intent i = new Intent(this, FinalEditImage.class);
-//                    startActivity(i);
-//                } else {
-//                    Intent i = new Intent(this, CroppingPage.class);
-//                    startActivity(i);
-//                }
+                ((MyApplication) this.getApplication()).setCurrent_textbox_num(current_box_num + 1);
+                if((current_box_num + 1) > ((MyApplication) this.getApplication()).getNum_box()) {
+                    Intent i = new Intent(this, FinalEditImage.class);
+                    startActivity(i);
+                } else {
+                    Intent i = new Intent(this, CroppingPage.class);
+                    startActivity(i);
+                }
 
+
+
+                //TextView d = findViewById(R.id.textView);///////////////////////////////////////////////////////////////
+                //d.setText(text_from_img);
 //                ImageView v = findViewById(R.id.test_image);
 //                v.setImageURI(resultUri);
 //                v.setImageURI(((MyApplication) this.getApplication()).getAll_cropped(current_box_num - 1));
@@ -145,6 +172,108 @@ public class CroppingPage extends AppCompatActivity {
             }
         }
     }
+
+
+
+
+
+//    public void StartTranslation(){
+//        if(text_from_img.length() != 0){
+//            Log.d("myTag", "This is my messageyes");
+//
+//            TranslatorOptions trans_config = new TranslatorOptions.Builder().setSourceLanguage(TranslateLanguage.ENGLISH)
+//                    .setTargetLanguage(TranslateLanguage.FRENCH).build();
+//            final Translator trans = Translation.getClient(trans_config);
+//
+//            //Download Model if needed
+//            DownloadConditions conditions = new DownloadConditions.Builder().requireWifi().build();
+//            trans.downloadModelIfNeeded(conditions).addOnSuccessListener(new OnSuccessListener<Void>() {
+//                @Override
+//                public void onSuccess(Void unused) {
+//                    Log.d("myTag", "This is my messageddddddddddddddddddddd");
+//                }
+//            }).addOnFailureListener(new OnFailureListener() {
+//                @Override
+//                public void onFailure(@NonNull Exception e) {
+//                    Log.d("myTag", "This is my failllllllllllllllllllllllllll");
+//                }
+//            });
+//
+//            trans.translate(text_from_img).addOnSuccessListener(new OnSuccessListener<String>() {
+//                @Override
+//                public void onSuccess(String s) {
+//                    text_from_img = s;
+//                }
+//            }).addOnFailureListener(new OnFailureListener() {
+//                @Override
+//                public void onFailure(@NonNull Exception e) {
+//                    Log.d("myTag", "Tffffffffffffffffffffffffffffllllllll");
+//                }
+//            });
+//        }
+//    }
+
+
+
+        // Real Translation app
+//    public void StartTranslation(){
+//        String lang_bef = ((MyApplication) this.getApplication()).getLang_from_before();
+//        String lang_aft = ((MyApplication) this.getApplication()).getLang_from_after();
+//        Http.post(text_from_img, lang_bef, lang_aft, new JsonHttpResponseHandler(){
+//            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+//                try {
+//                    JSONObject serverResp = new JSONObject(response.toString());
+//                    JSONObject jsonObject = serverResp.getJSONObject("data");
+//                    JSONArray transObject = jsonObject.getJSONArray("translations");
+//                    JSONObject transObject2 =  transObject.getJSONObject(0);
+//                    text_from_img = transObject2.getString("translatedText");
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+//                    e.printStackTrace();
+//            }
+//        });
+//    }
+
+    //Temp for testing
+    public void StartTranslation(){
+        if(text_from_img.charAt(text_from_img.length() - 1) != 'n'){
+            text_from_img = "Hello, who are you?";
+        } else {
+            text_from_img = "Hello my name is Jon";
+        }
+    }
+
+
+
+
+
+//    public void StartTranslation(){
+//        translate_api translate=new translate_api();
+//        translate.setOnTranslationCompleteListener(new translate_api.OnTranslationCompleteListener() {
+//            @Override
+//            public void onStartTranslation() {
+//                // here you can perform initial work before translated the text like displaying progress bar
+//            }
+//
+//            @Override
+//            public void onCompleted(String text) {
+//                // "text" variable will give you the translated text
+//                text_from_img = text;
+//            }
+//
+//            @Override
+//            public void onError(Exception e) {
+//
+//            }
+//        });
+//        translate.execute(text_from_img, "en", "es");
+//    }
+
+
+
 
 
 
