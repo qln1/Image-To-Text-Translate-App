@@ -28,22 +28,22 @@
         <item>Yellow</item>
         <item>Green</item>
         <item>Blue</item>
-        <item>Purple</item>
+        <item>Magenta</item>
         <item>Pink</item>
     </string-array>
 
     <string-array name="color_back">
+        <item>White</item>
+        <item>Black</item>
+        <item>Grey</item>
         <item>None</item>
         <item>Red</item>
         <item>Orange</item>
         <item>Yellow</item>
         <item>Green</item>
         <item>Blue</item>
-        <item>Purple</item>
+        <item>Magenta</item>
         <item>Pink</item>
-        <item>Black</item>
-        <item>White</item>
-        <item>Grey</item>
     </string-array>
 
     <string-array name="number">

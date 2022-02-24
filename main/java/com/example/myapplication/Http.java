@@ -15,8 +15,12 @@ public class Http {
     private static AsyncHttpClient client = new AsyncHttpClient();
 
 
-    public static void post(String transText,String sourceLang, String destLang, AsyncHttpResponseHandler responseHandler) {
+    public static void post(String transText, String sourceLang, String destLang, AsyncHttpResponseHandler responseHandler) {
         client.get(getAbsoluteUrl(transText, sourceLang, destLang), responseHandler);
+    }
+
+    public static String getUrl(String transText, String sourceLang, String destLang) {
+        return getAbsoluteUrl(transText, sourceLang, destLang);
     }
 
     private static String makeKeyChunk(String key) {

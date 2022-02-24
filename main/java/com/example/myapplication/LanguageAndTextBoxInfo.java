@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -21,11 +24,17 @@ public class LanguageAndTextBoxInfo extends AppCompatActivity {
     String font_color_result = "";
     String background_color_result = "";
     int num_box_result = 0;
+    TextView sample;
+    TextView sample2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_language_and_text_box_info);
+
+        sample = findViewById(R.id.sample);
+        sample2 = findViewById(R.id.sample2);
 
 
         // show the image to the user
@@ -34,7 +43,7 @@ public class LanguageAndTextBoxInfo extends AppCompatActivity {
         imgPicture.setImageBitmap(bit_image);
 
         //BEFORE LANGUAGE SPINNER
-        Spinner before_spinner = (Spinner) findViewById(R.id.after_la);
+        Spinner before_spinner = (Spinner) findViewById(R.id.before_la_spin);
 
         ArrayAdapter<String> before_adapt = new ArrayAdapter<String>(LanguageAndTextBoxInfo.this,
                 android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.languages));
@@ -88,6 +97,8 @@ public class LanguageAndTextBoxInfo extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int i, long l) {
                 font_family_result = parent.getSelectedItem().toString();
                 ((TextView) parent.getChildAt(0)).setTextSize(22);
+                sample.setTypeface(Typeface.create(font_family_result, Typeface.NORMAL));
+                sample2.setTypeface(Typeface.create(font_family_result, Typeface.NORMAL));
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
@@ -109,6 +120,9 @@ public class LanguageAndTextBoxInfo extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int i, long l) {
                 font_color_result = parent.getSelectedItem().toString();
                 ((TextView) parent.getChildAt(0)).setTextSize(22);
+
+                sample.setTextColor(ColorParser(font_color_result));
+                sample2.setTextColor(ColorParser(font_color_result));
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
@@ -130,6 +144,12 @@ public class LanguageAndTextBoxInfo extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int i, long l) {
                 background_color_result = parent.getSelectedItem().toString();
                 ((TextView) parent.getChildAt(0)).setTextSize(22);
+
+                GradientDrawable shape =  new GradientDrawable();
+                shape.setCornerRadius(12);
+                shape.setColor(ColorParser(background_color_result));
+                sample.setBackground(shape);
+                sample2.setBackground(shape);
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
@@ -169,5 +189,34 @@ public class LanguageAndTextBoxInfo extends AppCompatActivity {
         ((MyApplication) this.getApplication()).setNum_box(num_box_result);
 
         startActivity(i);
+    }
+
+
+    public int ColorParser(String color){
+        switch(color){
+            case "Red":
+                return Color.RED;
+            case "None":
+                return Color.TRANSPARENT;
+            case "Orange":
+                return Color.parseColor("#ffa500");
+            case "Yellow":
+                return Color.YELLOW;
+            case "Green":
+                return Color.GREEN;
+            case "Blue":
+                return Color.BLUE;
+            case "Magenta":
+                return Color.MAGENTA;
+            case "Pink":
+                return Color.parseColor("#ffc0cb");
+            case "Black":
+                return Color.BLACK;
+            case "White":
+                return Color.WHITE;
+            case "Grey":
+                return Color.GRAY;
+        }
+        return Color.TRANSPARENT;
     }
 }

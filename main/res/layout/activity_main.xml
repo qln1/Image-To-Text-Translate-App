@@ -8,23 +8,23 @@
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="206dp"
-        android:layout_height="219dp"
+        android:layout_width="233dp"
+        android:layout_height="236dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="171dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="190dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/imagetext_icon___copy" />
+        app:srcCompat="@drawable/logo" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="217dp"
         android:layout_height="115dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/title" />
@@ -62,16 +62,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-    <ImageView
-        android:id="@+id/imgPicture"
-        android:layout_width="389dp"
-        android:layout_height="462dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="44dp"
-        android:layout_weight="0.23"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

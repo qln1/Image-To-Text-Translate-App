@@ -1,12 +1,9 @@
 package com.example.myapplication;
 
-
 import android.app.Application;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.net.Uri;
-
-import java.util.ArrayList;
 
 public class MyApplication extends Application {
     Bitmap original_image = null;
@@ -26,6 +23,25 @@ public class MyApplication extends Application {
     Point[] all_points = new Point[10];
     //ArrayList<Uri> all_cropped = new ArrayList<Uri>(1);
 
+
+    public void resetEverything() {
+        for(int i = 0; i < all_points.length; i++){
+            all_points[i] = null;
+            all_translated[i] = null;
+            all_cropped_size[i] = null;
+        }
+        font_color = "";
+        font_family = "";
+        background_color = "";
+
+        original_image = null;
+        image_file_location = null;
+
+        lang_from_before = "";
+        lang_from_after = "";
+        num_box = 0;
+        current_textbox_num = 1;
+    }
 
     public Point getAll_points(int i) {
         return all_points[i];
@@ -125,5 +141,7 @@ public class MyApplication extends Application {
     public void setNum_box(int num_box) {
         this.num_box = num_box;
     }
+
+
 
 }

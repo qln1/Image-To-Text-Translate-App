@@ -76,26 +76,6 @@
 
     </FrameLayout>
 
-    <ImageView
-        android:id="@+id/test_image"
-        android:layout_width="81dp"
-        android:layout_height="89dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_launcher_background" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="191dp"
-        android:layout_height="59dp"
-        android:layout_marginTop="148dp"
-        android:text="TextView"
-        app:autoSizeTextType="uniform"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!--        android:layout_weight="0.23"-->
